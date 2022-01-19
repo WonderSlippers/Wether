@@ -50,6 +50,18 @@ public class DbUtil {
         preparedStatement.execute();
 
     }
+    public static void updateDataOfWeather(Connection connection, int id, String fxDate, int tempMax, int tempMin, String textDay,String oldTextDay) throws SQLException {
+        try (PreparedStatement ps = connection.prepareStatement("UPDATE weathers SET fxDate=?,tempMax=?,tempMin=?，textDay=? WHERE city_id=?&&textDay=?")) {
+            ps.setObject(1, fxDate); // 注意：索引从1开始
+            ps.setObject(2, tempMax);
+            ps.setObject(3, tempMin);
+            ps.setObject(4, textDay);
+            ps.setObject(5, id);
+            ps.setObject(6, oldTextDay);
+            int n = ps.executeUpdate(); // 返回更新的行数
+        }
+
+    }
 
     public static ResultSet queryDataOfWeather(Connection connection, String location) throws SQLException {
         String sql2 = "select * from cities as t1,weathers as t2 where t1.name=" + location + "&&t1.city_id=t2.city_id";
