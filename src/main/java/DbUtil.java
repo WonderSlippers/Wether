@@ -17,7 +17,7 @@ public class DbUtil {
 
         //数据源配置
         DruidDataSource dataSource = new DruidDataSource();
-        dataSource.setUrl("jdbc:mysql://127.0.0.1/db_student?serverTimezone=UTC");
+        dataSource.setUrl("jdbc:mysql://127.0.0.1/weather?serverTimezone=UTC");
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver"); //这个可以缺省的，会根据url自动识别
         dataSource.setUsername("root");
         dataSource.setPassword("root");
